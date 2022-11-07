@@ -70,7 +70,7 @@ namespace projet_pizza
                 new Pizza("4 fromages", 11.5f, true, new List<string> {"cantal", "mozza", "suisse", "parmesan"}),
                 new Pizza("margherita", 9f, true, new List<string> {"sauce tomate", "oignon", "poivron"}),
                 new Pizza("mexicainne", 14f, false, new List<string>{"sauce", "piment", "mozza" }),
-                new Pizza("Portugaise", 12.4f, false, new List<string>{" sauce tomate", "olive", "jambom", "tomates"}),
+                new Pizza("Portugaise", 12.4f, false, new List<string>{"sauce", "olive", "jambom", "tomates"}),
                 new Pizza("Californie", 8f, true, new List<string>{"sauce", "ananas", "avocat", "tomates"}),
             };
 
@@ -116,17 +116,21 @@ namespace projet_pizza
             Console.WriteLine("pizzas -> vegetariennes");
 
             // 1 seule ligne where
-            //listePizza = listePizza.Where(p => p.vegetarienne).ToList();
-
-            listePizza = listePizza.Where(p => p.ContientIngredient("oignon")).ToList();
-
-
+            listePizza = listePizza.Where(p => p.vegetarienne).ToList();
             foreach (var pizza in listePizza)
             {
                 pizza.Afficher();
             }
 
+            Console.WriteLine("-------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("pizza qui contient du tomate");
 
+            listePizza = listePizza.Where(p => p.ContientIngredient("tomate")).ToList();
+            foreach (var pizza in listePizza)
+            {
+                pizza.Afficher();
+            }
         }
     }
 }
